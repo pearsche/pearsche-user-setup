@@ -34,9 +34,9 @@
 						DetachAndRemoveGlyphs()
 						Generate($1)
 					'';
-					chowmatrix = super.callPackage ../derivationsYetToUpstream/chowmatrix.nix {};
-					auburn-sounds-graillon-2 = super.callPackage ../derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
-					tal-reverb-4 = super.callPackage ../derivationsYetToUpstream/tal-reverb-4.nix {};
+					chowmatrix = super.callPackage ./derivationsYetToUpstream/chowmatrix.nix {};
+					auburn-sounds-graillon-2 = super.callPackage ./derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
+					tal-reverb-4 = super.callPackage ./derivationsYetToUpstream/tal-reverb-4.nix {};
 					nvtop = super.nvtop.override {
 						nvidia = false;
 					};
