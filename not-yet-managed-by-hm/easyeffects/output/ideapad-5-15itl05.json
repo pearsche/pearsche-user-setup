@@ -1,7 +1,7 @@
 {
     "output": {
         "bass_enhancer#0": {
-            "amount": 15.0,
+            "amount": 13.0,
             "blend": 0.0,
             "bypass": false,
             "floor": 10.0,

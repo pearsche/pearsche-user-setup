@@ -517,9 +517,10 @@ in
 				hwdec-codecs = "all";
 				gpu-context = "auto";
 				gpu-api = "vulkan";
+				gpu-shader-cache = true;
 				# Likes to crash
 				#vf="scale_vaapi=w=1920:h=1080:";
-				vf="scale_vaapi=w=1920:h=1080:mode=hq:force_original_aspect_ratio=decrease";
+				vf="scale_vaapi=mode=hq:force_original_aspect_ratio=decrease";
 				#blend-subtitles=true; # Enabling raises gpu usage considerably.
 				deinterlace = "no"; # it's a default, but just in case
 				#video-unscaled=true; # force vaapi scaling
@@ -532,8 +533,8 @@ in
 				# Interpolation is way too expensive on a intel iris xe graphics igpu
 				# tscale="oversample";
 				# interpolation=true; # raises it a lil, least so far
-				video-sync = "display-resample"; # raises gpu usage a bit
-				video-sync-max-video-change = "5";
+				#video-sync = "display-resample"; # raises gpu usage a bit
+				#video-sync-max-video-change = "5";
 				opengl-pbo = true; # decreases gpu usage
 				dither-depth = "auto";
 				dither = "fruit"; # default
