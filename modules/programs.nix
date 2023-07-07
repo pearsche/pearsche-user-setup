@@ -520,7 +520,7 @@ in
 				gpu-shader-cache = true;
 				# Likes to crash
 				#vf="scale_vaapi=w=1920:h=1080:";
-				vf="scale_vaapi=mode=hq:force_original_aspect_ratio=decrease";
+				vf="scale_vaapi=mode=hq:force_original_aspect_ratio=decrease:format=p010";
 				#blend-subtitles=true; # Enabling raises gpu usage considerably.
 				deinterlace = "no"; # it's a default, but just in case
 				#video-unscaled=true; # force vaapi scaling
