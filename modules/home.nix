@@ -127,7 +127,9 @@
 			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4
 			
 			# Video Production & manipulation
-			pitivi  kdenlive mkvtoolnix davinci-resolve
+			pitivi  kdenlive mkvtoolnix 
+			# bug https://github.com/NixOS/nixpkgs/issues/242091
+			#davinci-resolve
 			
 			# Web Browsers
 			google-chrome vivaldi vivaldi-ffmpeg-codecs 

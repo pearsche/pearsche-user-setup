@@ -517,7 +517,9 @@ in
 				hwdec-codecs = "all";
 				gpu-context = "auto";
 				gpu-api = "vulkan";
+				# GPU shader cache will be enabled by default on mpv 0.36, but I'm on 0.35 atm.
 				gpu-shader-cache = true;
+				gpu-shader-cache-folder = "~/.cache/mpv";
 				# Likes to crash
 				#vf="scale_vaapi=w=1920:h=1080:";
 				vf="scale_vaapi=mode=hq:force_original_aspect_ratio=decrease:format=p010";
