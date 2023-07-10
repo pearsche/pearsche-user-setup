@@ -56,7 +56,7 @@
 			blackbox-terminal
 
 			# Nix tooling
-			rnix-lsp nix-prefetch-scripts niv nixd
+			rnix-lsp nix-prefetch-scripts niv nixd nil
 
 			# Debuggers
 			gdb valgrind
