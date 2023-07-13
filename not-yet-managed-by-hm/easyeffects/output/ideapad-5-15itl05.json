@@ -131,7 +131,7 @@
                 "enable-band": true,
                 "external-sidechain": false,
                 "knee": -9.0,
-                "makeup": 7.5,
+                "makeup": 5.0,
                 "mute": false,
                 "ratio": 3.0,
                 "release-threshold": -100.0,

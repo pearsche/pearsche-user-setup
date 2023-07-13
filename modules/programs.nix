@@ -521,17 +521,17 @@ in
 				gpu-shader-cache = true;
 				gpu-shader-cache-folder = "~/.cache/mpv";
 				# Likes to crash
-				#vf="scale_vaapi=w=1920:h=1080:";
-				vf="scale_vaapi=mode=hq:force_original_aspect_ratio=decrease:format=p010";
+				vf="scale_vaapi=mode=nl_anamorphic:force_original_aspect_ratio=decrease:format=p010";
 				#blend-subtitles=true; # Enabling raises gpu usage considerably.
 				deinterlace = "no"; # it's a default, but just in case
 				#video-unscaled=true; # force vaapi scaling
 				#scale="spline36";
 				#cscale="spline36";
 				#dscale="catmull_rom";
-				linear-downscaling=true;
-				correct-downscaling = true; # raises gpu usage, but less than sigmoid-upscaling
-				sigmoid-upscaling = false; # raises gpu usage mildly, disable, perhaps uneeded.
+				# The 3 following options are too much for when on battery, especially when using fractional scaling with the current upscale to 2x then downscale method.
+				#linear-downscaling=true;
+				#correct-downscaling = true;
+				#sigmoid-upscaling = false;
 				# Interpolation is way too expensive on a intel iris xe graphics igpu
 				# tscale="oversample";
 				# interpolation=true; # raises it a lil, least so far
