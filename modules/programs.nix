@@ -587,15 +587,16 @@ in
 				image-display-duration = "5";
 				osd-font-size = "30";
 				osd-font = "sans-serif";
-				ytdl-raw-options = "no-sponsorblock=";
 
 				# Cache
 				cache = true;
 				cache-secs = "120";
 
 				# yt-dlp
-				script-opts = "ytdl_hook-ytdl_path = yt-dlp";
-				ytdl-format = "bestvideo+bestaudio/best";
+				#script-opts = "ytdl_hook-ytdl_path = yt-dlp";
+				# Set maximum resolution to 1440p. Fractional scaling + 4k video = no bueno
+				ytdl-format = "bestvideo[height<=?1440]+bestaudio/best";
+				ytdl-raw-options = "no-sponsorblock=,downloader=aria2c,downloader-args=aria2c:'-x 10'";
 			};
 			bindings = {
 				RIGHT = "seek 5";

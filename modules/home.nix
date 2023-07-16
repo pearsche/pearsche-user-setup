@@ -129,7 +129,7 @@
 			# Video Production & manipulation
 			pitivi  kdenlive mkvtoolnix 
 			# bug https://github.com/NixOS/nixpkgs/issues/242091
-			#davinci-resolve
+			# davinci-resolve
 			
 			# Web Browsers
 			google-chrome vivaldi vivaldi-ffmpeg-codecs 
