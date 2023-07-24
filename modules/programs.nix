@@ -79,27 +79,27 @@ in
 						# However, this caused another issue, with VScode syntax highlight. So I just used sed (as seen above) to cut out the godforsaken quotations.
 						set colorScheme (gsettings get org.gnome.desktop.interface color-scheme | sed "s/'//g")
 						
-						# $GNOME_SETUP_DISPLAY isn't set on ttys, so this can be used to set the dark theme on ttys (and whatever other environment that might not be GNOME or doesn't set this variable)
+						# $GNOME_SETUP_DISPLAY isn't set on TTYs, so this can be used to set the dark theme on ttys (and whatever other environment that might not be GNOME or doesn't set this variable)
 						# That said, there's the "$prompt_use_dark_mode" variable, just in case to force this 
-						if test "$colorScheme" = "prefer-dark" -o -z "$GNOME_SETUP_DISPLAY" -o -n "$prompt_use_dark_mode"
-							switchColorschemes --prompt adwaita-dark
-						else
-							switchColorschemes --prompt adwaita-light
-						end
-						
+						 if test "$colorScheme" = "prefer-dark" -o -z "$GNOME_SETUP_DISPLAY" -o -n "$prompt_use_dark_mode"
+							switchColorschemes --prompt --skipSettingColors --darkMode
+						 else
+							switchColorschemes --prompt --skipSettingColors
+						 end
+
 						if test $USER = root
 							set_color red
 							printf '%s' $USER
 							set_color normal
 						else
-							set_color yellow
+							set_color $fish_color_user
 							printf '%s' $USER
 							set_color normal
 						end
 						
 						printf ' at '
 
-						set_color magenta
+						set_color $fish_color_host
 						echo -n (prompt_hostname)
 						set_color normal
 						printf ' in '
@@ -107,10 +107,18 @@ in
 						set_color $fish_color_cwd
 						printf '%s' (prompt_pwd)
 						set_color normal
-
+				
+						if test $SHLVL -gt 1
+							printf ' with'
+							set_color $pearsche_fish_color_stack
+							printf ' %u' $SHLVL
+							set_color normal
+							printf ' stacks'
+							
+						end
 
 						if test $__fish_last_status -ne 0
-							set_color red
+							set_color $fish_color_error
 							printf ' [%s]' $__fish_last_status
 							set_color normal
 						end
@@ -533,8 +541,8 @@ in
 				#correct-downscaling = true;
 				#sigmoid-upscaling = false;
 				# Interpolation is way too expensive on a intel iris xe graphics igpu
-				# tscale="oversample";
-				# interpolation=true; # raises it a lil, least so far
+				tscale="oversample";
+				interpolation=true; # raises it a lil, least so far
 				#video-sync = "display-resample"; # raises gpu usage a bit
 				#video-sync-max-video-change = "5";
 				opengl-pbo = true; # decreases gpu usage
@@ -557,7 +565,7 @@ in
 				# target-trc = "auto"; # default
 				tone-mapping = "hable";
 				hdr-compute-peak = "auto"; # intel gpu bug, value should be no
-				
+				hdr-contrast-recovery = "0.30"; # new default when using gpu-hq
 				# Removed in v0.35
 				#gamma-factor = "1.1";
 				#tone-mapping-param = "morbius";
