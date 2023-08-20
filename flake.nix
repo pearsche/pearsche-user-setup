@@ -27,11 +27,13 @@
 				# the path to your home.nix.
 				modules = [ 
 					./modules/fonts.nix
+					./modules/gtk.nix
 					./modules/home.nix
 					./modules/nixpkgs.nix
 					./modules/programs.nix
 					./modules/qt.nix
 					./modules/services.nix 
+					./modules/systemd.nix
 				];
 				extraSpecialArgs = {inherit inputs;};
 				# Optionally use extraSpecialArgs

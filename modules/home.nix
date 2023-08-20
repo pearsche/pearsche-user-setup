@@ -79,7 +79,9 @@
 			nano gnome-text-editor
 			
 			# Office and LaTeX
-			libreoffice-fresh onlyoffice-bin apostrophe 
+			libreoffice-fresh onlyoffice-bin
+			# bug https://github.com/NixOS/nixpkgs/issues/249946
+			# apostrophe 
 			
 			# QTWebkit shit
 			#mendeley
@@ -89,7 +91,9 @@
 			waifu2x-converter-cpp minecraft prismlauncher xonotic protontricks sl vintagestory stuntrally
 			
 			# Emulators
-			citra-nightly dolphin-emu-beta ppsspp-sdl-wayland
+			dolphin-emu-beta ppsspp-sdl-wayland
+			# bug https://github.com/NixOS/nixpkgs/pull/248491
+			# citra-nightly
 			# Multimedia Libs (commenting out because supposedly we're not supposed to install libs here)
 			# gnome-video-effects gst_all_1.gstreamer gst_all_1.gst-libav gst_all_1.gst-vaapi gst_all_1.gst-plugins-bad gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly 
 			
@@ -127,9 +131,9 @@
 			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4
 			
 			# Video Production & manipulation
-			pitivi  kdenlive mkvtoolnix 
-			# bug https://github.com/NixOS/nixpkgs/issues/242091
-			# davinci-resolve
+			  kdenlive mkvtoolnix davinci-resolve
+			# bug https://github.com/NixOS/nixpkgs/pull/248316
+			# pitivi
 			
 			# Web Browsers
 			google-chrome vivaldi vivaldi-ffmpeg-codecs 

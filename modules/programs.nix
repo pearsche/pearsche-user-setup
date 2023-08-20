@@ -130,7 +130,11 @@ in
 						set_color normal
 					'';
 				};
-
+				fish_right_prompt = {
+					body = ''
+						printf '「%s 」' (date "+%H:%M:%S")
+					'';
+				};
 			};
 		};
 		# nix-index conflicts with this, so let's disable it.
@@ -498,21 +502,6 @@ in
 			] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
 					];
 		};
-		gnome-terminal = {
-			enable = true;
-			themeVariant = "system";
-			profile = {
-				pearsche = {
-					default = true;
-					visibleName = "Default";
-					allowBold = true;
-					audibleBell = true;
-					boldIsBright = true;
-					scrollbackLines = 100000;
-					transparencyPercent = 20;
-				};
-			};
-		};
 		mpv = {
 			enable = true;
 			config = {
@@ -529,7 +518,7 @@ in
 				gpu-shader-cache = true;
 				gpu-shader-cache-folder = "~/.cache/mpv";
 				# Likes to crash
-				vf="scale_vaapi=mode=nl_anamorphic:force_original_aspect_ratio=decrease:format=p010";
+				vf="scale_vaapi=mode=hq:force_original_aspect_ratio=decrease:format=p010";
 				#blend-subtitles=true; # Enabling raises gpu usage considerably.
 				deinterlace = "no"; # it's a default, but just in case
 				#video-unscaled=true; # force vaapi scaling
@@ -558,19 +547,13 @@ in
 				vulkan-queue-count = "1"; # tfw only 1 queue
 
 				# Colors
-				# gamut-clipping was changed to gamut-mapping-mode
-				#gamut-clipping = true; # default
+				gamut-mapping-mode = "perceptual";
 				target-colorspace-hint = "yes";
 				# target-prim = "auto"; # default
 				# target-trc = "auto"; # default
 				tone-mapping = "hable";
 				hdr-compute-peak = "auto"; # intel gpu bug, value should be no
-				hdr-contrast-recovery = "0.30"; # new default when using gpu-hq
-				# Removed in v0.35
-				#gamma-factor = "1.1";
-				#tone-mapping-param = "morbius";
-				#icc-profile-auto = true;
-				#icc-profile = "/home/${usernameCompat}/.local/share/icc/Lenovo Ideapad 5 15ITL05 sorta ok profile.icm";
+				hdr-contrast-recovery = "0.5"; # new default when using gpu-hq
 
 				# Audio
 				#audio-swresample-o = "resampler=soxr,cutoff=0,matrix_encoding=dplii,cheby=1,precision=33,dither_method=improved_e_weighted";
@@ -615,6 +598,11 @@ in
 				KP5 = "set speed 1";
 				KP4 = "add speed -0.25";
 			};
+			scripts  = with pkgs.mpvScripts; [
+				mpris
+				# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3145
+				inhibit-gnome
+			];
 		};
 		yt-dlp = {
 			enable = true;

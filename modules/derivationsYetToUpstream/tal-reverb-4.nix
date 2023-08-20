@@ -11,8 +11,8 @@ stdenv.mkDerivation rec {
 	version = "4.0.3";
 
 	src = fetchzip {
-		url = https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip;
-		sha256 = "0gy9p4b8hs5n4n7hkmpgp6xr4xi0iinpi1fklra829qsa71z86a0";
+		url = "https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip";
+		sha256 = "0y53a8gw35mw01q2axab9b1f5gyk41w4c4k0058ykha3szj5z5w9";
 	};
 
 	nativeBuildInputs = [

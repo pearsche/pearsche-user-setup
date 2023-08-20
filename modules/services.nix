@@ -22,5 +22,6 @@
 			enableSshSupport = true;
 			pinentryFlavor = "gnome3";
 		};
+		#home-manager-gc.enable = true;
 	};
 }

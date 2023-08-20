@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
 	version = "2.7";
 
 	src = fetchzip {
-		url = https://www.auburnsounds.com/downloads/Graillon-FREE-2.7.zip;
+		url = "https://www.auburnsounds.com/downloads/Graillon-FREE-2.7.zip";
 		sha256 = "0vi0nv1106cf6n5n5pbyaq77ar9fnlzf7bb7p475fprbfcia4mv4";
 	};
 

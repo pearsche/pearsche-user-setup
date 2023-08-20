@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, lib, pkgs, ... }:
 {
 	nixpkgs = {
 			config = {
@@ -11,7 +11,7 @@
 					# Whalebird
 					"electron-19.0.7"
 					# Cinny
-					"openssl-1.1.1u"
+					"openssl-1.1.1v"
 					# Find out what
 					"electron-21.4.0"
 				];
@@ -33,6 +33,11 @@
 						Select(0u10000,0u1fffd)
 						DetachAndRemoveGlyphs()
 						Generate($1)
+					'';
+					home-manager-gc-start = super.writeScriptBin "home-manager-gc-start" ''
+#!${super.bash}/bin/bash
+set -e
+exec ${super.nix}/bin/nix-collect-garbage --delete-older-than 15d					
 					'';
 					chowmatrix = super.callPackage ./derivationsYetToUpstream/chowmatrix.nix {};
 					auburn-sounds-graillon-2 = super.callPackage ./derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
