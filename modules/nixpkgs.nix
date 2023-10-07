@@ -13,7 +13,7 @@
 					# Cinny
 					"openssl-1.1.1v"
 					# Find out what
-					"electron-21.4.0"
+					"electron-21.4.4"
 				];
 			};
 			overlays = [(

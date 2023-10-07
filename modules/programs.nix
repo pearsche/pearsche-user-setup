@@ -63,6 +63,8 @@ in
 				#wav2wvc = "find . -name \*.wav -execdir wavpack --allow-huge-tags -b256 -hh -x4 -c --import-id3 -m -v -w Encoder -w Settings {} -o ~/Music/WavPack/{}.temp \; -execdir wvgain ~/Music/WavPack/{}.temp \;";
 				loudgain4wavs = "find . -name \*.wav -execdir loudgain -a -k --tagmode=e '{}' \;";
 				connect2phone = "scrcpy --tcpip=192.168.1.50:39241 --power-off-on-close --turn-screen-off -b 10M --disable-screensaver --stay-awake";
+				update-input-font-hash = "nix-prefetch-url 'https://input.djr.com/build/?fontSelection=whole&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=0&braces=straight&preset=default&line-height=1.2&accept=I+do&email=&.zip' --unpack --name input-fonts-1.2";
+
 			};
 
 			functions = {
@@ -448,7 +450,8 @@ in
 			# This shits up userSettings.json by making it read only.
 			#enableUpdateCheck = false;
 			extensions = [
-				pkgs.vscode-extensions.arrterian.nix-env-selector
+				# Superseded by the direnv extension
+				#pkgs.vscode-extensions.arrterian.nix-env-selector
 				pkgs.vscode-extensions.donjayamanne.githistory
 				pkgs.vscode-extensions.eamodio.gitlens
 				pkgs.vscode-extensions.formulahendry.code-runner
@@ -470,7 +473,7 @@ in
 				pkgs.vscode-extensions.pkief.material-icon-theme
 				pkgs.vscode-extensions.redhat.java
 				pkgs.vscode-extensions.matklad.rust-analyzer
-				pkgs.vscode-extensions.skyapps.fish-vscode
+				# pkgs.vscode-extensions.skyapps.fish-vscode
 				pkgs.vscode-extensions.twxs.cmake
 				pkgs.vscode-extensions.vscjava.vscode-java-debug
 				pkgs.vscode-extensions.vscjava.vscode-java-dependency
@@ -491,7 +494,6 @@ in
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.cpptools-extension-pack
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.cpptools-themes
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.remote-explorer
-				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vscode.Theme-MaterialKit
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-vsliveshare.vsliveshare
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.sainnhe.gruvbox-material
 				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.intellicode-api-usage-examples
@@ -499,6 +501,8 @@ in
 				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.vscodeintellicode-completions
 				#inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.VisualStudioExptTeam.vscodeintellicode-insiders
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.vscjava.vscode-java-pack
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.gruntfuggly.todo-tree
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.bmalehorn.vscode-fish
 			] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
 					];
 		};
@@ -585,7 +589,8 @@ in
 
 				# yt-dlp
 				#script-opts = "ytdl_hook-ytdl_path = yt-dlp";
-				# Set maximum resolution to 1440p. Fractional scaling + 4k video = no bueno
+				# Set maximum resolution to 1440p.
+				# Good enough bitrate.
 				ytdl-format = "bestvideo[height<=?1440]+bestaudio/best";
 				ytdl-raw-options = "no-sponsorblock=,downloader=aria2c,downloader-args=aria2c:'-x 10'";
 			};
@@ -602,6 +607,7 @@ in
 				mpris
 				# https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3145
 				inhibit-gnome
+				uosc
 			];
 		};
 		yt-dlp = {

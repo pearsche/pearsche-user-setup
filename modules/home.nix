@@ -19,7 +19,7 @@
 			libsForQt5.breeze-icons
 
 			# System monitoring, managing & benchmarking tools
-			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils gnome.gnome-power-manager powertop btrfs-progs file stress-ng nvtop powerstat iotop
+			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils gnome.gnome-power-manager powertop btrfs-progs file stress-ng nvtop powerstat iotop smem
 			
       # System management
       
@@ -40,6 +40,9 @@
 	
 			# Miscellanous cli apps
 			xorg.xeyes maigret bc xdg-utils
+
+			# Miscellanous stuff...
+			open-in-mpv
 
 			# Font management
 			fontforge font-manager
@@ -62,7 +65,7 @@
 			gdb valgrind
 
 			# Code editors/IDEs
-			netbeans micro
+			netbeans micro 
 
 			# Documentation tools
 			
@@ -79,7 +82,7 @@
 			nano gnome-text-editor
 			
 			# Office and LaTeX
-			libreoffice-fresh onlyoffice-bin
+			libreoffice-fresh onlyoffice-bin_latest
 			# bug https://github.com/NixOS/nixpkgs/issues/249946
 			# apostrophe 
 			
@@ -91,9 +94,7 @@
 			waifu2x-converter-cpp minecraft prismlauncher xonotic protontricks sl vintagestory stuntrally
 			
 			# Emulators
-			dolphin-emu-beta ppsspp-sdl-wayland
-			# bug https://github.com/NixOS/nixpkgs/pull/248491
-			# citra-nightly
+			dolphin-emu-beta ppsspp-sdl-wayland citra-nightly
 			# Multimedia Libs (commenting out because supposedly we're not supposed to install libs here)
 			# gnome-video-effects gst_all_1.gstreamer gst_all_1.gst-libav gst_all_1.gst-vaapi gst_all_1.gst-plugins-bad gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly 
 			
@@ -112,14 +113,12 @@
 			# Adding both normal ffmpeg and ffmpeg_5 because at time of writing (14-oct-22) default ffmpeg is 4.4.2
 			wavpack mac fdk-aac-encoder lame flac freac opusTools opustags flacon easytag spek
 			
-			
 			# General multimedia tools
-			mediainfo  ffmpeg-fuller 
-			# broken: handbrake-pearsche https://github.com/NixOS/nixpkgs/pull/235822
+			mediainfo  ffmpeg-fuller handbrake-pearsche
 
 			# Digital media players/readers/streamers
-			celluloid clapper amberol quodlibet syncplay rhythmbox spotify gthumb
-
+			celluloid clapper amberol quodlibet rhythmbox spotify gthumb syncplay
+			
 			# Screen/Video recorders
 			obs-studio-with-plugins simplescreenrecorder kooha
 
@@ -131,9 +130,7 @@
 			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4
 			
 			# Video Production & manipulation
-			  kdenlive mkvtoolnix davinci-resolve
-			# bug https://github.com/NixOS/nixpkgs/pull/248316
-			# pitivi
+			kdenlive mkvtoolnix davinci-resolve pitivi
 			
 			# Web Browsers
 			google-chrome vivaldi vivaldi-ffmpeg-codecs 
@@ -148,12 +145,14 @@
 			whalebird
 			
 			# Image creation and manipulation
-			# gimp-with-plugins https://github.com/NixOS/nixpkgs/pull/210937
 			# imagemagickBig is the one that includes ghostscript
-			drawing gimp imagemagickBig realesrgan-ncnn-vulkan gnome-obfuscate eyedropper
+			drawing gimp-with-plugins imagemagickBig realesrgan-ncnn-vulkan gnome-obfuscate eyedropper
 
 			# Phone stuff
-			scrcpy 
+			scrcpy
+
+			# Computer Graphics
+			unityhub blender
 		];
 		sessionVariables = {
 			# Enable wayland for some apps that don't default to wayland yet
@@ -194,6 +193,7 @@
 		#	"$HOME/.local/bin"
 		#];
 		
+		file."current-hm".source = ./.;
 		# Version that the installed home-manager is compatible with.
     # Update notes talk about it.
 		stateVersion = "22.11";

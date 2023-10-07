@@ -1,7 +1,7 @@
 {
     "output": {
         "bass_enhancer#0": {
-            "amount": 25.0,
+            "amount": 17.5,
             "blend": 10.0,
             "bypass": false,
             "floor": 10.0,
@@ -13,13 +13,17 @@
         },
         "blocklist": [],
         "filter#0": {
+            "balance": 0.0,
             "bypass": false,
-            "frequency": 225.0,
-            "inertia": 20.0,
+            "frequency": 180.0,
+            "gain": 0.0,
             "input-gain": 0.0,
-            "mode": "36dB/oct Highpass",
+            "mode": "RLC (BT)",
             "output-gain": 0.0,
-            "resonance": -3.0
+            "quality": 0.0,
+            "slope": "x1",
+            "type": "High-pass",
+            "width": 4.0
         },
         "limiter#0": {
             "alr": false,
@@ -289,7 +293,7 @@
             "side-balance": 0.0,
             "side-level": 0.0,
             "softclip": false,
-            "stereo-base": 0.25,
+            "stereo-base": 0.12,
             "stereo-phase": 0.0
         }
     }
