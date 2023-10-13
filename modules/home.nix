@@ -82,7 +82,7 @@
 			nano gnome-text-editor
 			
 			# Office and LaTeX
-			libreoffice-fresh onlyoffice-bin_latest
+			libreoffice-fresh onlyoffice-bin_latest gnome-latex 
 			# bug https://github.com/NixOS/nixpkgs/issues/249946
 			# apostrophe 
 			

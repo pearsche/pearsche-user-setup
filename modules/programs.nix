@@ -536,8 +536,8 @@ in
 				# Interpolation is way too expensive on a intel iris xe graphics igpu
 				tscale="oversample";
 				interpolation=true; # raises it a lil, least so far
-				#video-sync = "display-resample"; # raises gpu usage a bit
-				#video-sync-max-video-change = "5";
+				video-sync = "display-resample"; # raises gpu usage a bit
+				video-sync-max-video-change = "5";
 				opengl-pbo = true; # decreases gpu usage
 				dither-depth = "auto";
 				dither = "fruit"; # default
@@ -551,7 +551,8 @@ in
 				vulkan-queue-count = "1"; # tfw only 1 queue
 
 				# Colors
-				gamut-mapping-mode = "perceptual";
+				gamut-mapping-mode = "saturation";
+				libplacebo-opts-append="gamut_expansion=yes";
 				target-colorspace-hint = "yes";
 				# target-prim = "auto"; # default
 				# target-trc = "auto"; # default
