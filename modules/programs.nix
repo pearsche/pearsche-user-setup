@@ -168,7 +168,7 @@ in
 			};
 			signing = {
 				signByDefault = true;
-				key = "F233FBE900BDC393";
+				key = "61767B07561E0166";
 			};
 
 		};
