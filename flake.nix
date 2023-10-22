@@ -9,9 +9,13 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+		nix-index-database = {
+			url = "github:Mic92/nix-index-database";
+					inputs.nixpkgs.follows = "nixpkgs";
+				};
 	};
 
-	outputs = { nixpkgs, home-manager, nix-vscode-extensions, ... }@inputs:
+	outputs = { nixpkgs, home-manager, nix-vscode-extensions, nix-index-database, ... }@inputs:
 		let
 			system = "x86_64-linux";
 		in {
@@ -28,10 +32,11 @@
 					./modules/nixpkgs.nix
 					./modules/programs.nix
 					./modules/qt.nix
-					./modules/services.nix 
+					./modules/services.nix
 					./modules/systemd.nix
+					nix-index-database.hmModules.nix-index
 				];
-				extraSpecialArgs = {inherit inputs;};
+				extraSpecialArgs = { inherit inputs; installPath = /home/pearsche/Documents/Programming/Repositories/Personal/pearsche-user-setup; username = "pearsche"; };
 				# Optionally use extraSpecialArgs
 				# to pass through arguments to home.nix
 			};
