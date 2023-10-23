@@ -66,6 +66,12 @@ exec ${super.nix}/bin/nix-collect-garbage --delete-older-than 15d
 					gimp-pearsche = super.gimp-with-plugins.override {
 						withPython = true;
 					};
+					# This just installs a hunspell package with these dictionaries
+					# Not for *other* packages to use them...
+					#hunspell-pearsche = super.hunspellWithDicts [
+					#	super.hunspellDicts.en_US
+					#	super.hunspellDicts.es_PE
+					#];
 				} 
 			)];
 	};

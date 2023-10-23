@@ -152,7 +152,16 @@
 			scrcpy
 
 			# Computer Graphics
-			unityhub blender
+			blender
+
+			# Gamedev
+			unityhub godot3-mono godot3-mono-export-templates
+			## This is for godot's C# support
+			msbuild
+
+			# Spellchecking dictionaries
+			#TODO: Write about this in the future NixOS article I wanna write.
+			hunspellDicts.en_US hunspellDicts.es_PE aspellDicts.en aspellDicts.es aspellDicts.en-science aspellDicts.en-computers
 		];
 		
 		# Broken https://github.com/nix-community/home-manager/issues/3417
