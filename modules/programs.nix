@@ -168,7 +168,7 @@ in
 			};
 			signing = {
 				signByDefault = true;
-				key = "61767B07561E0166";
+				key = "AEC0A812DBBE4BC9";
 			};
 
 		};
@@ -224,7 +224,7 @@ in
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.kosz78.nim
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.cschlosser.doxdocgen
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jeff-hykin.better-cpp-syntax
-				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jgclark.vscode-todo-highlight
+				# inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.jgclark.vscode-todo-highlight
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.josetr.cmake-language-support-vscode
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-dotnettools.vscode-dotnet-runtime
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.ms-python.isort
@@ -244,6 +244,9 @@ in
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.vscjava.vscode-java-pack
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.gruntfuggly.todo-tree
 				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.bmalehorn.vscode-fish
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.dart-code.dart-code
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.dart-code.flutter
+				inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace.dart-code.flutter-local-device-exposer
 			] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
 					];
 		};
@@ -362,6 +365,11 @@ in
 				# aria2 arguments
 				downloader-args = "aria2c:'-x 10'";
 			};
+		};
+		man = {
+			# TODO: https://github.com/nix-community/home-manager/issues/4624
+			# package = pkgs.mandoc;
+			generateCaches = true;
 		};
 		mangohud = {
 			enable = true;

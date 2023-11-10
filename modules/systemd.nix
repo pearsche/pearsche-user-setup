@@ -57,8 +57,14 @@
 				};
 				Timer = {
 					OnCalendar = "sunday";
+					# Copying the same stuff on the nix-gc timer
 					Persistent = true;
 					RandomizedDelaySec = 0;
+				};
+				Install = {
+					WantedBy = [ 
+						"timers.target"
+					];
 				};
 			};
 		};

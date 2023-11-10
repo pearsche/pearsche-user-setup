@@ -35,10 +35,10 @@
 						Generate($1)
 					'';
 					home-manager-gc-start = super.writeScriptBin "home-manager-gc-start" ''
-#!${super.bash}/bin/bash
-set -e
-exec ${super.nix}/bin/nix-collect-garbage --delete-older-than 15d					
-					'';
+          #!${super.bash}/bin/bash
+            set -e
+            exec ${super.nix}/bin/nix-collect-garbage --delete-older-than 15d					
+          '';
 					chowmatrix = super.callPackage ./derivationsYetToUpstream/chowmatrix.nix {};
 					auburn-sounds-graillon-2 = super.callPackage ./derivationsYetToUpstream/auburn-sounds-graillon-2.nix {};
 					tal-reverb-4 = super.callPackage ./derivationsYetToUpstream/tal-reverb-4.nix {};

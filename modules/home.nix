@@ -9,7 +9,7 @@
 		packages = with pkgs; [
 			
 			# TODO: Organize better
-
+		
 			# Cryptocurrency
 			monero-gui xmrig-mo
 			# Need to report it so it gets fixed
@@ -19,7 +19,7 @@
 			libsForQt5.breeze-icons
 
 			# System monitoring, managing & benchmarking tools
-			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils gnome.gnome-power-manager powertop btrfs-progs file stress-ng nvtop powerstat iotop smem
+			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils gnome.gnome-power-manager powertop btrfs-progs file stress-ng nvtop powerstat iotop smem nix-info
 			
       # System management
       
@@ -68,12 +68,13 @@
 			netbeans micro 
 
 			# Documentation tools
+			zeal
 			
 			# Java libraries
 			commonsIo
 
 			# Internet tools
-			curl wget aria fragments giara megacmd
+			curl wget aria fragments megacmd
 			
 			# VPN
 			protonvpn-gui
@@ -123,11 +124,11 @@
 			obs-studio-with-plugins simplescreenrecorder kooha
 
 			# Music production: DAWs
-			audacity ardour qpwgraph
+			audacity ardour qpwgraph reaper
 			# zrythm
 
 			# Music production: plugins
-			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4 calf CHOWTapeModel zam-plugins gxplugins-lv2
+			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4 calf CHOWTapeModel zam-plugins gxplugins-lv2 tap-plugins
 			
 			# Video Production & manipulation
 			kdenlive mkvtoolnix davinci-resolve pitivi olive-editor
