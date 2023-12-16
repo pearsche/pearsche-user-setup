@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
 	nixpkgs = {
 			config = {
@@ -6,14 +6,8 @@
 				joypixels.acceptLicense = true;
 				input-fonts.acceptLicense = true;
 				permittedInsecurePackages = [
-					# Davinci Resolve
-					"python-2.7.18.6"
-					# Whalebird
-					"electron-19.0.7"
-					# Cinny
-					"openssl-1.1.1v"
-					# Find out what
-					"electron-21.4.4"
+					# Bitwarden
+					"electron-25.9.0"
 				];
 			};
 			overlays = [(

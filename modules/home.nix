@@ -1,4 +1,4 @@
-{ config, pkgs, installPath, ... }:
+{ config, pkgs, installPath, inputs, ... }:
 
 {
 	imports = [
@@ -10,6 +10,9 @@
 			
 			# TODO: Organize better
 		
+			# AI stuff
+			inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
+
 			# Cryptocurrency
 			monero-gui xmrig-mo
 			# Need to report it so it gets fixed
@@ -19,7 +22,7 @@
 			libsForQt5.breeze-icons
 
 			# System monitoring, managing & benchmarking tools
-			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils gnome.gnome-power-manager powertop btrfs-progs file stress-ng nvtop powerstat iotop smem nix-info
+			intel-gpu-tools libva-utils mesa-demos vulkan-tools lm_sensors htop gtop clinfo s-tui neofetch compsize smartmontools nvme-cli btop pciutils usbutils gnome.gnome-power-manager powertop btrfs-progs file stress-ng nvtop-intel powerstat iotop smem nix-info
 			
       # System management
       
@@ -95,7 +98,7 @@
 			waifu2x-converter-cpp minecraft prismlauncher xonotic protontricks sl vintagestory stuntrally tome4
 			
 			# Emulators
-			dolphin-emu-beta ppsspp-sdl-wayland citra-nightly
+			dolphin-emu-beta ppsspp-sdl-wayland citra-nightly pcsx2
 			# Multimedia Libs (commenting out because supposedly we're not supposed to install libs here)
 			# gnome-video-effects gst_all_1.gstreamer gst_all_1.gst-libav gst_all_1.gst-vaapi gst_all_1.gst-plugins-bad gst_all_1.gst-plugins-base gst_all_1.gst-plugins-good gst_all_1.gst-plugins-ugly 
 			
@@ -115,7 +118,7 @@
 			wavpack mac fdk-aac-encoder lame flac freac opusTools opustags flacon easytag spek
 			
 			# General multimedia tools
-			mediainfo  ffmpeg-fuller handbrake-pearsche
+			mediainfo ffmpeg-fuller handbrake-pearsche
 
 			# Digital media players/readers/streamers
 			celluloid clapper amberol quodlibet rhythmbox spotify gthumb syncplay
@@ -124,14 +127,13 @@
 			obs-studio-with-plugins simplescreenrecorder kooha
 
 			# Music production: DAWs
-			audacity ardour qpwgraph reaper
-			# zrythm
+			audacity ardour qpwgraph reaper zrythm
 
 			# Music production: plugins
 			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4 calf CHOWTapeModel zam-plugins gxplugins-lv2 tap-plugins
 			
 			# Video Production & manipulation
-			kdenlive mkvtoolnix davinci-resolve pitivi olive-editor
+			kdenlive mkvtoolnix davinci-resolve pitivi olive-editor flowblade
 			
 			# Web Browsers
 			google-chrome vivaldi vivaldi-ffmpeg-codecs 
@@ -140,10 +142,10 @@
 			#vivaldi-widevine 
 
 			# Chat apps
-			element-desktop cinny-desktop tdesktop  discord gnome.polari dino session-desktop mumble fractal
+			tdesktop discord gnome.polari mumble fractal
 			
 			# Fediverse apps
-			whalebird
+			
 			
 			# Image creation and manipulation
 			# imagemagickBig is the one that includes ghostscript
@@ -160,6 +162,8 @@
 			## This is for godot's C# support
 			msbuild
 
+			# Life managing
+			gtg 
 			# Spellchecking dictionaries
 			#TODO: Write about this in the future NixOS article I wanna write.
 			hunspellDicts.en_US hunspellDicts.es_PE aspellDicts.en aspellDicts.es aspellDicts.en-science aspellDicts.en-computers
@@ -174,13 +178,15 @@
 		file."current-hm".source = ./.;
 		# Symlink configuration files for programs that modify their settings at runtime/exit
 		# https://github.com/nix-community/home-manager/issues/3514
+		# FIXME: Some of these configurations can be handled better, so, do that.
 		file.".config/btop".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/to-symlink/btop";
 		file.".config/htop".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/to-symlink/htop";
 		file.".config/easyeffects".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/to-symlink/easyeffects";
 		file.".config/neofetch".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/to-symlink/neofetch";
 		file.".config/xmrig-mo".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/to-symlink/xmrig-mo";
+		file.".config/MangoHud".source = config.lib.file.mkOutOfStoreSymlink "${installPath}/to-symlink/MangoHud";
 		# Version that the installed home-manager is compatible with.
     # Update notes talk about it.
-		stateVersion = "22.11";
+		stateVersion = "23.11";
 	};
 }
