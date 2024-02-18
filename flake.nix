@@ -1,11 +1,11 @@
 {
-	description = "Pearsche's home-manager setup.";
+	description = "Stereomato's home-manager setup.";
 
 	inputs = {
 		# Specify the source of Home Manager and Nixpkgs.
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 		home-manager = {
-			url = "github:nix-community/home-manager";
+			url = "github:nix-community/home-manager/master";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 		nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
@@ -23,7 +23,7 @@
 		let
 			system = "x86_64-linux";
 		in {
-			homeConfigurations."pearsche" = home-manager.lib.homeManagerConfiguration {
+			homeConfigurations."stereomato" = home-manager.lib.homeManagerConfiguration {
 				# https://github.com/nix-community/home-manager/issues/2942
 				pkgs = nixpkgs.legacyPackages.${system};
 
@@ -42,7 +42,7 @@
 					nix-index-database.hmModules.nix-index
 
 				];
-				extraSpecialArgs = { inherit inputs; installPath = "/home/pearsche/Documents/SoftwareDevelopment/Repositories/Personal/pearsche-user-setup"; username = "pearsche"; };
+				extraSpecialArgs = { inherit inputs; installPath = "/home/stereomato/Documents/Software Development/Repositories/Personal/hm-setup"; username = "stereomato"; };
 				# Optionally use extraSpecialArgs
 				# to pass through arguments to home.nix
 			};

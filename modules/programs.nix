@@ -206,16 +206,19 @@ in
 				#blend-subtitles=true; # Enabling raises gpu usage considerably.
 				deinterlace = "no"; # it's a default, but just in case
 				#video-unscaled=true; # force vaapi scaling
-				#scale="spline36";
+				# gpu-next sets these to scalers that use too much power
+				# and I already use vaapi scaling
+				scale = "bilinear";
 				#cscale="spline36";
-				#dscale="catmull_rom";
+				dscale = "bilinear";
 				# The 3 following options are too much for when on battery, especially when using fractional scaling with the current upscale to 2x then downscale method.
 				#linear-downscaling=true;
-				#correct-downscaling = true;
-				#sigmoid-upscaling = false;
+				# gpu-next enables these, too much power usage imo
+				correct-downscaling = false;
+				sigmoid-upscaling = false;
 				# Interpolation is way too expensive on a intel iris xe graphics igpu
-				tscale="oversample";
-				interpolation=true; # raises it a lil, least so far
+				tscale = "oversample";
+				interpolation = true; # raises it a lil, least so far
 				#video-sync = "display-resample"; # raises gpu usage a bit
 				#video-sync-max-video-change = "5";
 				opengl-pbo = true; # decreases gpu usage
@@ -262,7 +265,7 @@ in
 				osd-fractions = "";
 				image-display-duration = "5";
 				osd-font-size = "30";
-				osd-font = "sans-serif";
+				osd-font = "system-ui";
 
 				# Cache
 				cache = true;

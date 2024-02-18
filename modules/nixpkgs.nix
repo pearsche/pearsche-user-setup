@@ -45,7 +45,7 @@
 							obs-vaapi
 						];
 					};
-					handbrake-pearsche = super.handbrake.override {
+					handbrake-stereomato = super.handbrake.override {
 						useFdk = true;
 					};
 					ffmpeg-fuller = super.ffmpeg_6-full.override {
@@ -57,16 +57,19 @@
 							enableGnomeExtensions = true;
 						};
 					};
-					gimp-pearsche = super.gimp-with-plugins.override {
+					gimp-stereomato = super.gimp-with-plugins.override {
 						withPython = true;
 					};
 					# This just installs a hunspell package with these dictionaries
 					# Not for *other* packages to use them...
-					#hunspell-pearsche = super.hunspellWithDicts [
+					#hunspell-stereomato = super.hunspellWithDicts [
 					#	super.hunspellDicts.en_US
 					#	super.hunspellDicts.es_PE
 					#];
-				} 
+					#python3Packages.librosa = super.python3Packages.librosa.#overrideAttrs(old: {
+					#	disabledTests = super.python3Packages.librosa.disabledTests ++ "test_nnls_vector";
+					#});
+				}
 			)];
 	};
 }

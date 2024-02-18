@@ -41,6 +41,7 @@
 				pkgs.gst_all_1.gst-vaapi
 				pkgs.pkgsi686Linux.gst_all_1.gst-vaapi
 			];
+			EDITOR = "code --wait --new-window";
 		};
 		services = {
 			home-manager-gc = {

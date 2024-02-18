@@ -4,8 +4,8 @@
 	imports = [
 	];
 	home = {
-		username = "pearsche";
-		homeDirectory = "/home/pearsche";
+		username = "stereomato";
+		homeDirectory = "/home/stereomato";
 		packages = with pkgs; [
 			
 			# TODO: Organize better
@@ -14,7 +14,7 @@
 			inputs.nixified-ai.packages.x86_64-linux.invokeai-amd
 
 			# Cryptocurrency
-			monero-gui xmrig-mo
+			monero-gui # xmrig-mo
 			# Need to report it so it gets fixed
 			#oxen
 			
@@ -42,7 +42,10 @@
 			gnome-icon-theme gnome.gnome-tweaks gnome-extension-manager metadata-cleaner warp wike gnome-solanum newsflash 
 	
 			# Miscellanous cli apps
-			xorg.xeyes maigret bc xdg-utils
+			xorg.xeyes 
+			# FTBFS: nix log /nix/store/1swy5s502g4ygqyb799c14vd9z67b5fw-python3.11-certomancer-0.11.0.drv
+			# maigret 
+			bc xdg-utils
 
 			# Miscellanous stuff...
 			open-in-mpv
@@ -95,7 +98,7 @@
 			
 			# Games & Fun
 			# minecraft (official launcher) https://github.com/NixOS/nixpkgs/issues/179323
-			waifu2x-converter-cpp minecraft prismlauncher xonotic protontricks sl vintagestory stuntrally tome4
+			waifu2x-converter-cpp minecraft prismlauncher protontricks sl vintagestory stuntrally tome4
 			
 			# Emulators
 			dolphin-emu-beta ppsspp-sdl-wayland citra-nightly pcsx2
@@ -118,7 +121,7 @@
 			wavpack mac fdk-aac-encoder lame flac freac opusTools opustags flacon easytag spek
 			
 			# General multimedia tools
-			mediainfo ffmpeg-fuller handbrake-pearsche
+			mediainfo ffmpeg-fuller handbrake-stereomato
 
 			# Digital media players/readers/streamers
 			celluloid clapper amberol quodlibet rhythmbox spotify gthumb syncplay
@@ -127,13 +130,18 @@
 			obs-studio-with-plugins simplescreenrecorder kooha
 
 			# Music production: DAWs
-			audacity ardour qpwgraph reaper zrythm
+			audacity ardour qpwgraph reaper 
+			# FTBFS: nix log /nix/store/9rfkwm2k1sd4x8yy50bhni7ffjd7ar0n-zrythm-1.0.0-beta.4.9.1.drv
+			# zrythm
 
 			# Music production: plugins
 			dragonfly-reverb distrho lsp-plugins x42-plugins chowmatrix auburn-sounds-graillon-2 tal-reverb-4 calf CHOWTapeModel zam-plugins gxplugins-lv2 tap-plugins
 			
 			# Video Production & manipulation
-			kdenlive mkvtoolnix davinci-resolve pitivi olive-editor flowblade
+			kdenlive mkvtoolnix davinci-resolve 
+			# FTBFS: https://github.com/NixOS/nixpkgs/pull/285803
+			pitivi 
+			olive-editor flowblade
 			
 			# Web Browsers
 			google-chrome vivaldi vivaldi-ffmpeg-codecs 
@@ -142,14 +150,19 @@
 			#vivaldi-widevine 
 
 			# Chat apps
-			tdesktop discord gnome.polari mumble fractal
+			tdesktop discord gnome.polari mumble fractal element-desktop dino
 			
 			# Fediverse apps
 			
 			
 			# Image creation and manipulation
 			# imagemagickBig is the one that includes ghostscript
-			drawing gimp-with-plugins imagemagickBig realesrgan-ncnn-vulkan gnome-obfuscate eyedropper
+			drawing gimp-with-plugins imagemagickBig 
+			
+			# FTBFS: nix log /nix/store/r3yc4j7a5yrzj5d6hvgz762r52w6b3mz-Real-ESRGAN-ncnn-vulkan-0.2.0.drv
+			#realesrgan-ncnn-vulkan 
+			gnome-obfuscate eyedropper
+
 
 			# Phone stuff
 			scrcpy
@@ -188,5 +201,17 @@
 		# Version that the installed home-manager is compatible with.
     # Update notes talk about it.
 		stateVersion = "23.11";
+
+
+	# Workaround for cursors broken in gnome by default
+	# affects: mpv and games it seems
+		pointerCursor = {
+			package = pkgs.gnome.adwaita-icon-theme;
+			name = "Adwaita";
+			size = 24;
+			gtk.enable = true;
+			x11.enable = true;
+		};
+
 	};
 }
